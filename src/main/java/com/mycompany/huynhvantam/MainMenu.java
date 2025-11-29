@@ -62,7 +62,7 @@ public class MainMenu extends JFrame {
         panel.add(Box.createRigidArea(new Dimension(0, 15)));
         
         // Subtitle
-        JLabel subtitle = new JLabel("Mỗi level có maze ngẫu nhiên mới!");
+        JLabel subtitle = new JLabel("Cac level có maze ngẫu nhiên mới!");
         subtitle.setFont(new Font("Arial", Font.ITALIC, 16));
         subtitle.setForeground(new Color(150, 200, 255));
         subtitle.setAlignmentX(Component.CENTER_ALIGNMENT);
