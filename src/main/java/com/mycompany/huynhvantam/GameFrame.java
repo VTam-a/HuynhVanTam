@@ -19,7 +19,6 @@ public class GameFrame extends JFrame {
         setLayout(new BorderLayout());
         setResizable(false);
 
-        // Info panel với chiều cao cố định
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0)) {
             @Override
             protected void paintComponent(Graphics g) {
@@ -43,16 +42,13 @@ public class GameFrame extends JFrame {
         topPanel.add(infoLabel);
         add(topPanel, BorderLayout.NORTH);
 
-        // Game panel - kích thước chính xác
         gamePanel = new GamePanel(gameState, this);
         gamePanel.setPreferredSize(new Dimension(700, 700));
         add(gamePanel, BorderLayout.CENTER);
 
-        // Glass Pane
         pauseGlassPane = createPauseGlassPane();
         setGlassPane(pauseGlassPane);
 
-        // Timer
         updateTimer = new Timer(1000, e -> {
             if (!gamePanel.isPaused()) {
                 updateInfo();
@@ -78,11 +74,9 @@ public class GameFrame extends JFrame {
                 Graphics2D g2d = (Graphics2D) g;
                 g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-                // Dark overlay
                 g2d.setColor(new Color(0, 0, 0, 200));
                 g2d.fillRect(0, 0, getWidth(), getHeight());
 
-                // Pause box
                 int boxW = 320;
                 int boxH = 280;
                 int boxX = (getWidth() - boxW) / 2;
@@ -95,7 +89,6 @@ public class GameFrame extends JFrame {
                 g2d.setStroke(new BasicStroke(3));
                 g2d.drawRoundRect(boxX, boxY, boxW, boxH, 25, 25);
 
-                // Title
                 g2d.setColor(Color.WHITE);
                 g2d.setFont(new Font("Arial", Font.BOLD, 42));
                 String title = "PAUSED";
@@ -108,7 +101,6 @@ public class GameFrame extends JFrame {
         glassPane.setOpaque(false);
         glassPane.setLayout(null);
 
-        // Buttons
         JButton resumeBtn = createStyledButton("Tiếp Tục");
         JButton menuBtn = createStyledButton("Menu Chính");
 
@@ -134,7 +126,6 @@ public class GameFrame extends JFrame {
         glassPane.add(resumeBtn);
         glassPane.add(menuBtn);
 
-        // Update button positions
         glassPane.addComponentListener(new java.awt.event.ComponentAdapter() {
             @Override
             public void componentResized(java.awt.event.ComponentEvent e) {
